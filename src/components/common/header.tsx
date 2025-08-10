@@ -1,6 +1,13 @@
 "use client";
 
-import { LogInIcon, LogOutIcon, MenuIcon } from "lucide-react";
+import {
+  HomeIcon,
+  LogInIcon,
+  LogOutIcon,
+  MenuIcon,
+  ShoppingBagIcon,
+  TruckIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -65,6 +72,37 @@ export const Header = () => {
                     >
                       <LogOutIcon />
                     </Button>
+                  </div>
+                  <div className="mt-8 mb-8 flex flex-col gap-6">
+                    <Button asChild>
+                      <Link
+                        href="/"
+                        className="hover:text-primary flex items-center gap-3 text-base font-medium transition-colors"
+                      >
+                        <HomeIcon className="h-5 w-5" />
+                        Início
+                      </Link>
+                    </Button>
+                    <Button>
+                      <Link
+                        href="/my-orders"
+                        className="hover:text-primary flex items-center gap-3 text-base font-medium transition-colors"
+                      >
+                        <TruckIcon className="h-5 w-5" />
+                        Meus Pedidos
+                      </Link>
+                    </Button>
+                    {/* 
+                    <Button>
+                      <Link
+                        href="/"
+                        className="hover:text-primary flex items-center gap-3 text-base font-medium transition-colors"
+                      >
+                        <ShoppingBagIcon className="h-5 w-5" />
+                        Sacola
+                      </Link>
+                    </Button>                    
+                    */}
                   </div>
                 </>
               ) : (
