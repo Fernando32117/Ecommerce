@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import CategorySelector from "@/components/common/category-selector";
 import { Header } from "@/components/common/header";
+import PartnerBrands from "@/components/common/partner-brands";
 import ProductList from "@/components/common/product-list";
 import { db } from "@/db";
 import { productTable } from "@/db/schema";
@@ -43,6 +44,8 @@ const Home = async () => {
             className="hidden h-auto w-full md:block"
           />
         </div>
+
+        <PartnerBrands />
 
         <ProductList products={products} title="Mais vendidos" />
 
