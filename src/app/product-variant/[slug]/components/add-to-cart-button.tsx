@@ -66,7 +66,7 @@ const AddToCartButton = ({
   return (
     <>
       <Button
-        className="rounded-full"
+        className="cursor-pointer rounded-full md:text-lg"
         size="lg"
         variant="outline"
         disabled={isPending}

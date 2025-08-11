@@ -48,28 +48,42 @@ const ProductActions = ({
 
   return (
     <>
-      <div className="px-5">
+      <div className="px-5 md:px-0">
         <div className="space-y-4">
-          <h3 className="font-medium">Quantidade</h3>
-          <div className="flex w-[100px] items-center justify-between rounded-lg border">
-            <Button size="icon" variant="ghost" onClick={handleDecrement}>
+          <h3 className="font-medium md:text-[15px]">Quantidade</h3>
+          <div className="flex w-[100px] items-center justify-between rounded-lg border md:w-[200px]">
+            <Button
+              className="cursor-pointer"
+              size="icon"
+              variant="ghost"
+              onClick={handleDecrement}
+            >
               <MinusIcon />
             </Button>
-            <p>{quantity}</p>
-            <Button size="icon" variant="ghost" onClick={handleIncrement}>
+            <p className="font-semibold md:text-lg">{quantity}</p>
+            <Button
+              className="cursor-pointer"
+              size="icon"
+              variant="ghost"
+              onClick={handleIncrement}
+            >
               <PlusIcon />
             </Button>
           </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 px-5">
+      <div className="flex flex-col space-y-4 px-5 md:grid md:grid-cols-2 md:gap-5 md:px-0">
         <AddToCartButton
           productVariantId={productVariantId}
           quantity={quantity}
           productImage={productImage}
           productName={fullProductName}
         />
-        <Button className="rounded-full" size="lg" onClick={handleBuyNow}>
+        <Button
+          className="cursor-pointer rounded-full md:text-lg"
+          size="lg"
+          onClick={handleBuyNow}
+        >
           Comprar agora
         </Button>
       </div>
