@@ -30,10 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
       >
         <ReactQueryProvider>
-          {children}
+          <main className="flex-1">{children}</main>
           <Footer />
         </ReactQueryProvider>
         <Toaster />
