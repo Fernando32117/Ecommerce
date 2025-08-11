@@ -1,7 +1,6 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import Footer from "@/components/common/footer";
 import { Header } from "@/components/common/header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { db } from "@/db";
@@ -36,6 +35,7 @@ const ConfirmationPage = async () => {
   if (!cart || cart?.items.length === 0) {
     redirect("/");
   }
+  const categories = await db.query.categoryTable.findMany({});
   const cartTotalInCents = cart.items.reduce(
     (acc, item) => acc + item.productVariant.priceInCents * item.quantity,
     0,
@@ -45,7 +45,7 @@ const ConfirmationPage = async () => {
   }
   return (
     <div>
-      <Header />
+      <Header categories={categories} />
       <div className="space-y-4 px-5">
         <Card>
           <CardHeader>
@@ -72,9 +72,6 @@ const ConfirmationPage = async () => {
             imageUrl: item.productVariant.imageUrl,
           }))}
         />
-      </div>
-      <div className="mt-12">
-        <Footer />
       </div>
     </div>
   );

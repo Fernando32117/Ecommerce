@@ -14,6 +14,11 @@ interface ProductItemProps {
 
 const ProductItem = ({ product, textContainerClassName }: ProductItemProps) => {
   const firstVariant = product.variants[0];
+
+  if (!firstVariant) {
+    return null;
+  }
+
   return (
     <Link
       href={`/product-variant/${firstVariant.slug}`}
@@ -25,19 +30,21 @@ const ProductItem = ({ product, textContainerClassName }: ProductItemProps) => {
         sizes="100vw"
         height={0}
         width={0}
-        className="h-auto w-full rounded-3xl"
+        className="h-auto w-full rounded-3xl md:h-[400px] md:w-[329px]"
       />
       <div
         className={cn(
-          "flex max-w-[200px] flex-col gap-1",
+          "flex w-[200px] flex-col gap-1 md:w-[300px]",
           textContainerClassName,
         )}
       >
-        <p className="truncate text-sm font-medium">{product.name}</p>
-        <p className="text-muted-foreground truncate text-xs font-medium">
+        <p className="truncate text-sm font-medium md:text-lg">
+          {product.name}
+        </p>
+        <p className="text-muted-foreground truncate text-xs font-medium md:text-sm">
           {product.description}
         </p>
-        <p className="truncate text-sm font-semibold">
+        <p className="truncate text-sm font-semibold md:text-lg">
           {formatCentsToBRL(firstVariant.priceInCents)}
         </p>
       </div>

@@ -2,7 +2,6 @@ import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import Footer from "@/components/common/footer";
 import { Header } from "@/components/common/header";
 import { db } from "@/db";
 import { shippingAddressTable } from "@/db/schema";
@@ -39,13 +38,14 @@ const IdentificationPage = async () => {
   const shippingAddresses = await db.query.shippingAddressTable.findMany({
     where: eq(shippingAddressTable.userId, session.user.id),
   });
+  const categories = await db.query.categoryTable.findMany({});
   const cartTotalInCents = cart.items.reduce(
     (acc, item) => acc + item.productVariant.priceInCents * item.quantity,
     0,
   );
   return (
     <div>
-      <Header />
+      <Header categories={categories} />
       <div className="space-y-4 px-5">
         <Addresses
           shippingAddresses={shippingAddresses}
@@ -63,9 +63,6 @@ const IdentificationPage = async () => {
             imageUrl: item.productVariant.imageUrl,
           }))}
         />
-      </div>
-      <div className="mt-12">
-        <Footer />
       </div>
     </div>
   );
