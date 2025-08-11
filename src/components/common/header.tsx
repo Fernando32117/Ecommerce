@@ -49,7 +49,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
             <div className="flex items-center gap-2">
               <UserIcon className="h-5 w-5 text-gray-600" />
               <span className="font-medium text-gray-800">
-                Olá, {session?.user?.name?.split(" ")?.[0] || "Visitante"}!
+                Olá, {session?.user?.name?.split(" ")?.[0] || "faça Login"}!
               </span>
             </div>
 

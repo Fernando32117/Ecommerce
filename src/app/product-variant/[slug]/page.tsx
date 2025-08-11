@@ -27,15 +27,21 @@ const ProductVariantPage = async ({ params }: ProductVariantPageProps) => {
       },
     },
   });
-  if (!productVariant) {
+
+  if (!productVariant || !productVariant.product) {
     return notFound();
   }
-  const likelyProducts = await db.query.productTable.findMany({
-    where: eq(productTable.categoryId, productVariant.product.categoryId),
-    with: {
-      variants: true,
-    },
-  });
+  const likelyProducts = await db.query.productTable
+    .findMany({
+      where: eq(productTable.categoryId, productVariant.product.categoryId),
+      with: {
+        variants: true,
+      },
+      limit: 10,
+    })
+    .then((products) =>
+      products.filter((product) => product.id !== productVariant.productId),
+    );
   const categories = await db.query.categoryTable.findMany({});
 
   return (
@@ -84,7 +90,9 @@ const ProductVariantPage = async ({ params }: ProductVariantPageProps) => {
           </p>
         </div>
 
-        <ProductList title="Talvez você goste" products={likelyProducts} />
+        {likelyProducts.length > 0 && (
+          <ProductList title="Talvez você goste" products={likelyProducts} />
+        )}
       </div>
     </>
   );
