@@ -39,7 +39,6 @@ const AddToCartButton = ({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["cart"] });
       toast.success("Produto adicionado ao carrinho!", {
-        description: `${productName || "Produto"} foi adicionado com sucesso.`,
         duration: 3000,
       });
       setShowCartAnimation(true);
