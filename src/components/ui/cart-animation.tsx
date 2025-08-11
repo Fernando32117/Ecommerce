@@ -97,7 +97,7 @@ const CartAnimation = ({
                     </div>
                   </div>
                 ) : (
-                  <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-gray-100">
+                  <div className="bg-gray-150 flex h-14 w-14 items-center justify-center rounded-lg">
                     <ShoppingBag className="h-7 w-7 text-gray-400" />
                   </div>
                 )}
