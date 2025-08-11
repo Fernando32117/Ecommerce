@@ -24,7 +24,7 @@ const Home = async () => {
 
   return (
     <>
-      <Header />
+      <Header categories={categories} />
       <div className="space-y-6">
         <div className="px-5">
           <Image

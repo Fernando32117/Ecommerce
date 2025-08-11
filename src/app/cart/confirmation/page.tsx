@@ -36,6 +36,7 @@ const ConfirmationPage = async () => {
   if (!cart || cart?.items.length === 0) {
     redirect("/");
   }
+  const categories = await db.query.categoryTable.findMany({});
   const cartTotalInCents = cart.items.reduce(
     (acc, item) => acc + item.productVariant.priceInCents * item.quantity,
     0,
@@ -45,7 +46,7 @@ const ConfirmationPage = async () => {
   }
   return (
     <div>
-      <Header />
+      <Header categories={categories} />
       <div className="space-y-4 px-5">
         <Card>
           <CardHeader>

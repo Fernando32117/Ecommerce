@@ -39,13 +39,14 @@ const IdentificationPage = async () => {
   const shippingAddresses = await db.query.shippingAddressTable.findMany({
     where: eq(shippingAddressTable.userId, session.user.id),
   });
+  const categories = await db.query.categoryTable.findMany({});
   const cartTotalInCents = cart.items.reduce(
     (acc, item) => acc + item.productVariant.priceInCents * item.quantity,
     0,
   );
   return (
     <div>
-      <Header />
+      <Header categories={categories} />
       <div className="space-y-4 px-5">
         <Addresses
           shippingAddresses={shippingAddresses}

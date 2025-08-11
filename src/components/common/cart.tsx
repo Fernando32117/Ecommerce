@@ -2,6 +2,7 @@
 
 import { ShoppingBasketIcon } from "lucide-react";
 import Link from "next/link";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { formatCentsToBRL } from "@/helpers/money";
@@ -18,14 +19,32 @@ import {
 } from "../ui/sheet";
 import CartItem from "./cart-item";
 
-export const Cart = () => {
+export interface CartRef {
+  open: () => void;
+}
+
+interface CartProps {
+  trigger?: React.ReactNode;
+}
+
+export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
   const { data: cart } = useCart();
+  const sheetRef = useRef<HTMLButtonElement>(null);
+
+  useImperativeHandle(ref, () => ({
+    open: () => {
+      sheetRef.current?.click();
+    },
+  }));
+
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon">
-          <ShoppingBasketIcon />
-        </Button>
+        {trigger || (
+          <Button variant="outline" size="icon" ref={sheetRef}>
+            <ShoppingBasketIcon />
+          </Button>
+        )}
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
@@ -86,6 +105,8 @@ export const Cart = () => {
       </SheetContent>
     </Sheet>
   );
-};
+});
+
+Cart.displayName = "Cart";
 
 // SERVER ACTION
