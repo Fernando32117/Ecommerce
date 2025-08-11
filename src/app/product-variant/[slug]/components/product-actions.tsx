@@ -3,16 +3,28 @@
 import { MinusIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 
+import AuthDialog from "@/components/ui/auth-dialog";
 import { Button } from "@/components/ui/button";
+import { authClient } from "@/lib/auth-client";
 
 import AddToCartButton from "./add-to-cart-button";
 
 interface ProductActionsProps {
   productVariantId: string;
+  productImage?: string;
+  productName?: string;
+  variantName?: string;
 }
 
-const ProductActions = ({ productVariantId }: ProductActionsProps) => {
+const ProductActions = ({
+  productVariantId,
+  productImage,
+  productName,
+  variantName,
+}: ProductActionsProps) => {
+  const { data: session } = authClient.useSession();
   const [quantity, setQuantity] = useState(1);
+  const [showAuthDialog, setShowAuthDialog] = useState(false);
 
   const handleDecrement = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
@@ -21,6 +33,18 @@ const ProductActions = ({ productVariantId }: ProductActionsProps) => {
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
   };
+
+  const handleBuyNow = () => {
+    if (!session?.user) {
+      setShowAuthDialog(true);
+      return;
+    }
+    // TODO: Implementar lógica de compra direta
+  };
+
+  const fullProductName = variantName
+    ? `${productName} - ${variantName}`
+    : productName;
 
   return (
     <>
@@ -42,11 +66,15 @@ const ProductActions = ({ productVariantId }: ProductActionsProps) => {
         <AddToCartButton
           productVariantId={productVariantId}
           quantity={quantity}
+          productImage={productImage}
+          productName={fullProductName}
         />
-        <Button className="rounded-full" size="lg">
+        <Button className="rounded-full" size="lg" onClick={handleBuyNow}>
           Comprar agora
         </Button>
       </div>
+
+      <AuthDialog open={showAuthDialog} onOpenChange={setShowAuthDialog} />
     </>
   );
 };

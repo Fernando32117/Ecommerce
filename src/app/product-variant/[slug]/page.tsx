@@ -72,7 +72,12 @@ const ProductVariantPage = async ({ params }: ProductVariantPageProps) => {
           </h3>
         </div>
 
-        <ProductActions productVariantId={productVariant.id} />
+        <ProductActions
+          productVariantId={productVariant.id}
+          productImage={productVariant.imageUrl}
+          productName={productVariant.product.name}
+          variantName={productVariant.name}
+        />
 
         <div className="px-5">
           <p className="text-shadow-amber-600">
