@@ -26,6 +26,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Fernando Souza" }],
   creator: "Fernando Souza",
   publisher: "Fernando Souza",
+  icons: {
+    icon: [
+      { url: "/letra-e.png", sizes: "32x32", type: "image/png" },
+      { url: "/letra-e.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/letra-e.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/letra-e.png",
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -45,7 +53,7 @@ export const metadata: Metadata = {
     siteName: "ECOMMERCE",
     images: [
       {
-        url: "/logo.svg",
+        url: "/letra-e.png",
         width: 1200,
         height: 630,
         alt: "ECOMMERCE - Sua loja de moda online",
@@ -57,7 +65,7 @@ export const metadata: Metadata = {
     title: "ECOMMERCE - Moda e Estilo | Roupas, Calçados e Acessórios",
     description:
       "Descubra as melhores marcas de moda: Nike, Adidas, Puma, Zara e muito mais.",
-    images: ["/logo.svg"],
+    images: ["/letra-e.png"],
   },
   robots: {
     index: true,
