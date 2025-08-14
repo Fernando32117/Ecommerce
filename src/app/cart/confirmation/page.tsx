@@ -46,32 +46,40 @@ const ConfirmationPage = async () => {
   return (
     <div>
       <Header categories={categories} />
-      <div className="space-y-4 px-5">
-        <Card>
-          <CardHeader>
-            <CardTitle>Identificação</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+      <div className="px-5">
+        <div className="flex flex-col md:flex-row md:items-start md:gap-10 md:px-20">
+          <div className="flex-1 space-y-4 md:space-y-0">
             <Card>
-              <CardContent>
-                <p className="text-sm">{formatAddress(cart.shippingAddress)}</p>
+              <CardHeader>
+                <CardTitle>Identificação</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <Card>
+                  <CardContent>
+                    <p className="text-sm">
+                      {formatAddress(cart.shippingAddress)}
+                    </p>
+                  </CardContent>
+                </Card>
+                <FinishOrderButton />
               </CardContent>
             </Card>
-            <FinishOrderButton />
-          </CardContent>
-        </Card>
-        <CartSummary
-          subtotalInCents={cartTotalInCents}
-          totalInCents={cartTotalInCents}
-          products={cart.items.map((item) => ({
-            id: item.productVariant.id,
-            name: item.productVariant.product.name,
-            variantName: item.productVariant.name,
-            quantity: item.quantity,
-            priceInCents: item.productVariant.priceInCents,
-            imageUrl: item.productVariant.imageUrl,
-          }))}
-        />
+          </div>
+          <div className="mt-2 flex-1 md:mt-0 md:max-w-[567px]">
+            <CartSummary
+              subtotalInCents={cartTotalInCents}
+              totalInCents={cartTotalInCents}
+              products={cart.items.map((item) => ({
+                id: item.productVariant.id,
+                name: item.productVariant.product.name,
+                variantName: item.productVariant.name,
+                quantity: item.quantity,
+                priceInCents: item.productVariant.priceInCents,
+                imageUrl: item.productVariant.imageUrl,
+              }))}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

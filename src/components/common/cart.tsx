@@ -46,14 +46,14 @@ export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
           </Button>
         )}
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="flex flex-col">
         <SheetHeader>
           <SheetTitle>Carrinho</SheetTitle>
         </SheetHeader>
 
-        <div className="flex h-full flex-col items-center p-5">
+        <div className="flex flex-1 flex-col">
           {!cart?.items || cart.items.length === 0 ? (
-            <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
+            <div className="flex flex-1 flex-col items-center justify-center gap-4 p-5 text-center">
               <ShoppingBasketIcon className="text-muted-foreground h-16 w-16" />
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold">
@@ -66,9 +66,9 @@ export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
             </div>
           ) : (
             <>
-              <div className="flex h-full max-h-full flex-col overflow-hidden">
+              <div className="flex-1 overflow-hidden">
                 <ScrollArea className="h-full">
-                  <div className="flex h-full flex-col gap-8">
+                  <div className="flex flex-col gap-4 p-5">
                     {cart.items.map((item) => (
                       <CartItem
                         key={item.id}
@@ -87,29 +87,26 @@ export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
                 </ScrollArea>
               </div>
 
-              <div className="flex flex-col gap-4">
-                <Separator />
-
-                <div className="flex items-center justify-between text-xs font-medium">
+              <div className="flex flex-col gap-4 border-t p-5">
+                <div className="flex items-center justify-between text-sm font-medium">
                   <p>Subtotal</p>
                   <p>{formatCentsToBRL(cart?.totalPriceInCents ?? 0)}</p>
                 </div>
-
                 <Separator />
 
-                <div className="flex items-center justify-between text-xs font-medium">
+                <div className="flex items-center justify-between text-sm font-medium">
                   <p>Entrega</p>
                   <p>GRÁTIS</p>
                 </div>
 
                 <Separator />
 
-                <div className="flex items-center justify-between text-xs font-medium">
+                <div className="flex items-center justify-between text-base font-bold">
                   <p>Total</p>
                   <p>{formatCentsToBRL(cart?.totalPriceInCents ?? 0)}</p>
                 </div>
 
-                <Button className="mt-5 rounded-full" asChild>
+                <Button className="mt-2 rounded-full" asChild>
                   <Link href="/cart/identification">Finalizar compra</Link>
                 </Button>
               </div>

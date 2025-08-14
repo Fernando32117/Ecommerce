@@ -11,7 +11,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-const Footer = () => {
+interface FooterProps {
+  hidden?: boolean;
+}
+
+const Footer = ({ hidden = false }: FooterProps) => {
+  if (hidden) return null;
+
   return (
     <footer className="bg-accent p- mt-12 w-full gap-1">
       <div className="container mx-auto px-4 py-12">
