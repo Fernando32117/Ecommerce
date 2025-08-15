@@ -10,16 +10,21 @@ interface CategorySelectorProps {
 
 const CategorySelector = ({ categories }: CategorySelectorProps) => {
   return (
-    <div className="rounded-3xl bg-[#F4EFFF] p-6 md:p-10">
-      <div className="grid grid-cols-2 gap-3 md:gap-8">
+    <div className="w-full rounded-3xl bg-[#F4EFFF] p-6 md:p-10">
+      <div className="grid w-full grid-cols-2 gap-3">
         {categories.map((category) => (
-          <Button
+          <Link
             key={category.id}
-            variant="ghost"
-            className="cursor-pointer rounded-full bg-white text-sm font-semibold md:py-8 md:text-lg"
+            href={`/category/${category.slug}`}
+            className="w-full"
           >
-            <Link href={`/category/${category.slug}`}>{category.name}</Link>
-          </Button>
+            <Button
+              variant="ghost"
+              className="w-full cursor-pointer rounded-full bg-white text-sm font-semibold md:py-8 md:text-lg"
+            >
+              {category.name}
+            </Button>
+          </Link>
         ))}
       </div>
     </div>
