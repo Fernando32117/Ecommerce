@@ -1,5 +1,6 @@
 import { desc } from "drizzle-orm";
 import Image from "next/image";
+import Link from "next/link";
 
 import CategorySelector from "@/components/common/category-selector";
 import { Header } from "@/components/common/header";
@@ -27,22 +28,26 @@ const Home = async () => {
       <Header categories={categories} />
       <div className="space-y-6">
         <div className="px-5">
-          <Image
-            src="/capa1.svg"
-            alt="Leve uma vida com estilo"
-            height={0}
-            width={0}
-            sizes="100vw"
-            className="h-auto w-full md:hidden"
-          />
-          <Image
-            src="/capa2.svg"
-            alt="Leve uma vida com estilo"
-            height={0}
-            width={0}
-            sizes="100vw"
-            className="hidden h-auto w-full md:block"
-          />
+          <Link href="/category/camisetas">
+            <Image
+              src="/capa1.svg"
+              alt="Leve uma vida com estilo"
+              height={0}
+              width={0}
+              sizes="100vw"
+              className="h-auto w-full cursor-pointer md:hidden"
+            />
+          </Link>
+          <Link href="/category/camisetas">
+            <Image
+              src="/capa2.svg"
+              alt="Leve uma vida com estilo"
+              height={0}
+              width={0}
+              sizes="100vw"
+              className="hidden h-auto w-full cursor-pointer md:block"
+            />
+          </Link>
         </div>
 
         <PartnerBrands />
@@ -59,35 +64,37 @@ const Home = async () => {
         </div>
 
         <div className="px-5">
-          <Image
-            src="/banner2.svg"
-            alt="Leve uma vida com estilo"
-            height={0}
-            width={0}
-            sizes="100vw"
-            className="h-auto w-full md:hidden"
-          />
-          <div className="hidden w-full md:grid md:grid-cols-2 md:gap-4">
-            <div className="flex h-auto">
+          <Link href="/category/jaquetas-moletons">
+            <Image
+              src="/banner2.svg"
+              alt="Leve uma vida com estilo"
+              height={0}
+              width={0}
+              sizes="100vw"
+              className="h-auto w-full cursor-pointer md:hidden"
+            />
+          </Link>
+          <div className="hidden w-full overflow-hidden md:grid md:grid-cols-2 md:gap-4">
+            <Link href="/category/tnis" className="block h-auto w-full">
               <Image
                 src="/bannerTenis2.svg"
                 alt="Nike Therma FIT Headed"
                 height={0}
                 width={0}
-                className="w-full"
+                sizes="100vw"
+                className="h-auto w-full cursor-pointer"
               />
-            </div>
-            <div>
-              <div className="flex h-auto">
-                <Image
-                  src="/bannerTenis1.svg"
-                  alt="Nike Therma FIT Headed"
-                  height={0}
-                  width={0}
-                  className="w-full"
-                />
-              </div>
-            </div>
+            </Link>
+            <Link href="/category/tnis" className="block h-auto w-full">
+              <Image
+                src="/bannerTenis1.svg"
+                alt="Nike Therma FIT Headed"
+                height={0}
+                width={0}
+                sizes="100vw"
+                className="h-auto w-full cursor-pointer"
+              />
+            </Link>
           </div>
         </div>
 
