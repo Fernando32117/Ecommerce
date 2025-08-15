@@ -22,7 +22,7 @@ const ProductItem = ({ product, textContainerClassName }: ProductItemProps) => {
   return (
     <Link
       href={`/product-variant/${firstVariant.slug}`}
-      className="flex flex-col gap-4"
+      className="group flex flex-col gap-4"
     >
       <Image
         src={firstVariant.imageUrl}
@@ -38,13 +38,13 @@ const ProductItem = ({ product, textContainerClassName }: ProductItemProps) => {
           textContainerClassName,
         )}
       >
-        <p className="truncate text-sm font-medium md:text-lg">
+        <p className="cursor-pointer truncate bg-clip-text text-sm font-medium transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:text-transparent md:text-lg">
           {product.name}
         </p>
         <p className="text-muted-foreground truncate text-xs font-medium md:text-sm">
           {product.description}
         </p>
-        <p className="truncate text-sm font-semibold md:text-lg">
+        <p className="cursor-pointer truncate bg-clip-text text-sm font-semibold transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:text-transparent md:text-lg">
           {formatCentsToBRL(firstVariant.priceInCents)}
         </p>
       </div>

@@ -20,7 +20,7 @@ const CategorySelector = ({ categories }: CategorySelectorProps) => {
           >
             <Button
               variant="ghost"
-              className="w-full cursor-pointer rounded-full bg-white text-sm font-semibold md:py-8 md:text-lg"
+              className="w-full cursor-pointer rounded-full bg-white text-sm font-semibold transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white md:py-8 md:text-lg"
             >
               {category.name}
             </Button>
@@ -30,5 +30,4 @@ const CategorySelector = ({ categories }: CategorySelectorProps) => {
     </div>
   );
 };
-
 export default CategorySelector;

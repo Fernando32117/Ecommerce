@@ -47,10 +47,12 @@ export const Header = ({ categories = [] }: HeaderProps) => {
           <div className="flex items-center justify-between">
             {/* Left - User Info */}
             <div className="flex items-center gap-2">
-              <UserIcon className="h-5 w-5 text-gray-600" />
-              <span className="font-medium text-gray-800">
-                Olá, {session?.user?.name?.split(" ")?.[0] || "faça Login"}!
-              </span>
+              <div className="group flex cursor-pointer items-center gap-2">
+                <UserIcon className="h-5 w-5 text-gray-600 transition-all duration-200 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text md:h-10 md:w-10" />
+                <span className="font-medium text-gray-800 transition-all duration-200 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text group-hover:text-transparent md:text-lg">
+                  Olá, {session?.user?.name?.split(" ")?.[0] || "faça Login"}!
+                </span>
+              </div>
             </div>
 
             {/* Center - Logo */}
@@ -99,28 +101,29 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader>
-                    <SheetTitle>Menu</SheetTitle>
+                    <SheetTitle className="md:text-lg">Menu</SheetTitle>
                   </SheetHeader>
                   <div className="px-5">
                     {session?.user ? (
                       <>
                         <div className="flex justify-between space-y-6">
                           <div className="flex items-center gap-3">
-                            <Avatar>
+                            <Avatar className="h-10 w-10 md:h-20 md:w-20">
                               <AvatarImage
                                 src={session?.user?.image as string | undefined}
+                                className="h-10 w-10 md:h-20 md:w-20"
                               />
-                              <AvatarFallback>
+                              <AvatarFallback className="flex h-10 w-10 items-center justify-center text-lg md:h-20 md:w-20 md:text-3xl">
                                 {session?.user?.name?.split(" ")?.[0]?.[0]}
                                 {session?.user?.name?.split(" ")?.[1]?.[0]}
                               </AvatarFallback>
                             </Avatar>
 
                             <div>
-                              <h3 className="font-semibold">
+                              <h3 className="font-semibold md:text-lg">
                                 {session?.user?.name}
                               </h3>
-                              <span className="text-muted-foreground block text-xs">
+                              <span className="text-muted-foreground block text-xs md:text-lg">
                                 {session?.user?.email}
                               </span>
                             </div>
@@ -129,6 +132,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                             variant="outline"
                             size="icon"
                             onClick={() => authClient.signOut()}
+                            className="cursor-pointer transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white"
                           >
                             <LogOutIcon />
                           </Button>
@@ -136,25 +140,22 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                         <div className="mt-8 mb-8 flex flex-col gap-3">
                           <Button
                             asChild
-                            className="justify-start"
+                            className="w-full cursor-pointer justify-start rounded-full bg-white text-base font-semibold transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white md:py-7 md:text-lg"
                             variant="outline"
                           >
-                            <Link
-                              href="/"
-                              className="hover:text-primary flex items-center gap-3 text-base font-medium transition-colors"
-                            >
+                            <Link href="/" className="flex items-center gap-3">
                               <HomeIcon className="h-5 w-5" />
                               Início
                             </Link>
                           </Button>
                           <Button
                             asChild
-                            className="justify-start"
+                            className="w-full cursor-pointer justify-start rounded-full bg-white text-base font-semibold transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white md:py-7 md:text-lg"
                             variant="outline"
                           >
                             <Link
                               href="/my-orders"
-                              className="hover:text-primary flex items-center gap-3 text-base font-medium transition-colors"
+                              className="flex items-center gap-3"
                             >
                               <TruckIcon className="h-5 w-5" />
                               Meus Pedidos
@@ -162,10 +163,10 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                           </Button>
                           <Button
                             onClick={handleOpenCart}
-                            className="justify-start"
+                            className="w-full cursor-pointer justify-start rounded-full bg-white text-[15px] font-semibold transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white md:py-7 md:text-lg"
                             variant="outline"
                           >
-                            <div className="hover:text-primary flex items-center gap-3 text-[15px] font-medium transition-colors">
+                            <div className="flex items-center gap-3">
                               <ShoppingBagIcon className="h-5 w-5" />
                               Sacola
                             </div>
@@ -174,8 +175,15 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                       </>
                     ) : (
                       <div className="flex items-center justify-between">
-                        <h2 className="font-semibold">Olá. Faça seu login!</h2>
-                        <Button size="icon" asChild variant="outline">
+                        <h2 className="font-semibold md:text-lg">
+                          Olá. Faça seu login!
+                        </h2>
+                        <Button
+                          size="icon"
+                          asChild
+                          variant="outline"
+                          className="transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white"
+                        >
                           <Link href="/authentication">
                             <LogInIcon />
                           </Link>
@@ -184,7 +192,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                     )}
                     {categories.length > 0 && (
                       <div className="mt-8">
-                        <h3 className="text-muted-foreground mb-4 text-sm font-semibold">
+                        <h3 className="text-muted-foreground mb-4 text-sm font-semibold md:text-lg">
                           Categorias
                         </h3>
                         <div className="flex flex-col gap-2">
@@ -192,7 +200,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                             <Button
                               key={category.id}
                               variant="ghost"
-                              className="bg-primary-foreground cursor-pointer justify-start rounded-lg text-sm font-medium"
+                              className="bg-primary-foreground cursor-pointer justify-start rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white md:py-7 md:text-lg"
                               asChild
                             >
                               <Link href={`/category/${category.slug}`}>
@@ -227,9 +235,10 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                 <Link
                   key={category.id}
                   href={`/category/${category.slug}`}
-                  className="font-medium text-gray-600 transition-colors hover:text-gray-900"
+                  className="group bg-clip-text font-medium text-gray-600 transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-transparent md:text-xl"
                 >
                   {category.name}
+                  <div className="h-0.5 w-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 transition-all duration-300 group-hover:w-full"></div>
                 </Link>
               ))}
             </nav>
@@ -375,7 +384,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                           <Button
                             key={category.id}
                             variant="ghost"
-                            className="bg-primary-foreground cursor-pointer justify-start rounded-lg text-sm font-medium"
+                            className="cursor-pointer justify-start rounded-lg bg-red-400 text-sm font-medium"
                             asChild
                           >
                             <Link href={`/category/${category.slug}`}>

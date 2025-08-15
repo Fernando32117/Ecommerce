@@ -21,7 +21,9 @@ interface ProductListProps {
 const ProductList = ({ title, products }: ProductListProps) => {
   return (
     <div className="space-y-6">
-      <h3 className="px-5 font-semibold md:text-lg">{title}</h3>
+      <h3 className="cursor-pointer bg-clip-text px-5 font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-transparent md:text-lg">
+        {title}
+      </h3>
       <div className="px-5">
         <Carousel>
           <CarouselContent>
