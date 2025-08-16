@@ -118,7 +118,7 @@ const CartItem = ({
             <TrashIcon />
           </Button>
           <p className="text-sm font-bold">
-            {formatCentsToBRL(productVariantPriceInCents)}
+            {formatCentsToBRL(productVariantPriceInCents * quantity)}
           </p>
         </div>
       </div>

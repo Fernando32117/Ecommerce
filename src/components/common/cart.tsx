@@ -67,7 +67,7 @@ export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
           ) : (
             <>
               <ScrollArea className="min-h-0 flex-1">
-                <div className="flex flex-col gap-4 p-5">
+                <div className="flex flex-col gap-4 p-5 pb-20">
                   {cart.items.map((item) => (
                     <CartItem
                       key={item.id}
