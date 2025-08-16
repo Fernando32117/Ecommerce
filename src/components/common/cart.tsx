@@ -46,12 +46,12 @@ export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
           </Button>
         )}
       </SheetTrigger>
-      <SheetContent className="flex flex-col">
+      <SheetContent className="flex h-full flex-col">
         <SheetHeader>
           <SheetTitle>Carrinho</SheetTitle>
         </SheetHeader>
 
-        <div className="flex flex-1 flex-col">
+        <div className="flex h-full flex-1 flex-col">
           {!cart?.items || cart.items.length === 0 ? (
             <div className="flex flex-1 flex-col items-center justify-center gap-4 p-5 text-center">
               <ShoppingBasketIcon className="text-muted-foreground h-16 w-16" />
@@ -66,28 +66,26 @@ export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
             </div>
           ) : (
             <>
-              <div className="flex-1 overflow-hidden">
-                <ScrollArea className="h-full">
-                  <div className="flex flex-col gap-4 p-5">
-                    {cart.items.map((item) => (
-                      <CartItem
-                        key={item.id}
-                        id={item.id}
-                        productVariantId={item.productVariant.id}
-                        productName={item.productVariant.product.name}
-                        productVariantName={item.productVariant.name}
-                        productVariantImageUrl={item.productVariant.imageUrl}
-                        productVariantPriceInCents={
-                          item.productVariant.priceInCents
-                        }
-                        quantity={item.quantity}
-                      />
-                    ))}
-                  </div>
-                </ScrollArea>
-              </div>
+              <ScrollArea className="min-h-0 flex-1">
+                <div className="flex flex-col gap-4 p-5">
+                  {cart.items.map((item) => (
+                    <CartItem
+                      key={item.id}
+                      id={item.id}
+                      productVariantId={item.productVariant.id}
+                      productName={item.productVariant.product.name}
+                      productVariantName={item.productVariant.name}
+                      productVariantImageUrl={item.productVariant.imageUrl}
+                      productVariantPriceInCents={
+                        item.productVariant.priceInCents
+                      }
+                      quantity={item.quantity}
+                    />
+                  ))}
+                </div>
+              </ScrollArea>
 
-              <div className="flex flex-col gap-4 border-t p-5">
+              <div className="bg-background sticky bottom-0 flex flex-col gap-4 border-t p-5">
                 <div className="flex items-center justify-between text-sm font-medium">
                   <p>Subtotal</p>
                   <p>{formatCentsToBRL(cart?.totalPriceInCents ?? 0)}</p>
