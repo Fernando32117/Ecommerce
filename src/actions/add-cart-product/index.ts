@@ -43,17 +43,22 @@ export const addProductToCart = async (data: AddProductToCartSchema) => {
       eq(cartItem.productVariantId, data.productVariantId),
   });
   if (cartItem) {
-    await db
+    const [updatedItem] = await db
       .update(cartItemTable)
       .set({
         quantity: cartItem.quantity + data.quantity,
       })
-      .where(eq(cartItemTable.id, cartItem.id));
-    return;
+      .where(eq(cartItemTable.id, cartItem.id))
+      .returning();
+    return updatedItem;
   }
-  await db.insert(cartItemTable).values({
-    cartId,
-    productVariantId: data.productVariantId,
-    quantity: data.quantity,
-  });
+  const [newItem] = await db
+    .insert(cartItemTable)
+    .values({
+      cartId,
+      productVariantId: data.productVariantId,
+      quantity: data.quantity,
+    })
+    .returning();
+  return newItem;
 };

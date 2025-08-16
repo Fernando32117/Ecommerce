@@ -1,7 +1,15 @@
 import crypto from "crypto";
 
 import { db } from ".";
-import { categoryTable, productTable, productVariantTable } from "./schema";
+import {
+  cartItemTable,
+  cartTable,
+  categoryTable,
+  orderItemTable,
+  orderTable,
+  productTable,
+  productVariantTable,
+} from "./schema";
 
 const productImages = {
   Mochila: {
@@ -243,6 +251,8 @@ const productImages = {
 function generateSlug(name: string): string {
   return name
     .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9\s-]/g, "")
     .replace(/\s+/g, "-")
     .trim();
@@ -542,6 +552,10 @@ async function main() {
   try {
     // Limpar dados existentes
     console.log("🧹 Limpando dados existentes...");
+    await db.delete(orderItemTable);
+    await db.delete(orderTable);
+    await db.delete(cartItemTable);
+    await db.delete(cartTable);
     await db.delete(productVariantTable);
     await db.delete(productTable);
     await db.delete(categoryTable);

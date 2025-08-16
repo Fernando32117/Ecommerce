@@ -130,7 +130,7 @@ const Footer = ({ hidden = false }: FooterProps) => {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/category/tnis"
+                  href="/category/tenis"
                   className="text-muted-foreground cursor-pointer transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:bg-clip-text hover:text-transparent"
                 >
                   Tênis
@@ -138,7 +138,7 @@ const Footer = ({ hidden = false }: FooterProps) => {
               </li>
               <li>
                 <Link
-                  href="/category/calas"
+                  href="/category/calcas"
                   className="text-muted-foreground cursor-pointer transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:bg-clip-text hover:text-transparent"
                 >
                   Calças
@@ -154,7 +154,7 @@ const Footer = ({ hidden = false }: FooterProps) => {
               </li>
               <li>
                 <Link
-                  href="/category/acessrios"
+                  href="/category/acessorios"
                   className="text-muted-foreground cursor-pointer transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:bg-clip-text hover:text-transparent"
                 >
                   Acessórios
