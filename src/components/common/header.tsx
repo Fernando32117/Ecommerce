@@ -245,14 +245,15 @@ export const Header = ({ categories = [] }: HeaderProps) => {
         </div>
 
         {/* Bottom Navigation Bar */}
+
         {categories.length > 0 && (
-          <div className="mt-10 mb-10 p-5">
-            <nav className="flex items-center justify-center gap-20 space-x-20">
+          <div className="md:mt-2 md:mb-2 lg:mt-5 lg:mb-5 lg:p-5">
+            <nav className="flex items-center justify-center gap-x-8 gap-y-4 md:gap-x-12 md:gap-y-6 lg:gap-x-16 lg:gap-y-8">
               {categories.map((category) => (
                 <Link
                   key={category.id}
                   href={`/category/${category.slug}`}
-                  className="group bg-clip-text font-medium text-gray-600 transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-transparent md:text-xl"
+                  className="group bg-clip-text font-medium text-gray-500 transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-transparent md:text-[16px] lg:text-[20px]"
                 >
                   {category.name}
                   <div className="h-0.5 w-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 transition-all duration-300 group-hover:w-full"></div>
