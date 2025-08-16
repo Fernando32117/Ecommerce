@@ -321,6 +321,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                           variant="outline"
                           size="icon"
                           onClick={() => authClient.signOut()}
+                          className="cursor-pointer transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white"
                         >
                           <LogOutIcon />
                         </Button>
@@ -328,25 +329,22 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                       <div className="mt-8 mb-8 flex flex-col gap-3">
                         <Button
                           asChild
-                          className="justify-start"
+                          className="w-full cursor-pointer justify-start rounded-full bg-white text-base font-semibold transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white"
                           variant="outline"
                         >
-                          <Link
-                            href="/"
-                            className="hover:text-primary flex items-center gap-3 text-base font-medium transition-colors"
-                          >
+                          <Link href="/" className="flex items-center gap-3">
                             <HomeIcon className="h-5 w-5" />
                             Início
                           </Link>
                         </Button>
                         <Button
                           asChild
-                          className="justify-start"
+                          className="w-full cursor-pointer justify-start rounded-full bg-white text-base font-semibold transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white"
                           variant="outline"
                         >
                           <Link
                             href="/my-orders"
-                            className="hover:text-primary flex items-center gap-3 text-base font-medium transition-colors"
+                            className="flex items-center gap-3"
                           >
                             <TruckIcon className="h-5 w-5" />
                             Meus Pedidos
@@ -354,10 +352,10 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                         </Button>
                         <Button
                           onClick={handleOpenCart}
-                          className="justify-start"
+                          className="w-full cursor-pointer justify-start rounded-full bg-white text-base font-semibold transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white"
                           variant="outline"
                         >
-                          <div className="hover:text-primary flex items-center gap-3 text-[15px] font-medium transition-colors">
+                          <div className="flex items-center gap-3">
                             <ShoppingBagIcon className="h-5 w-5" />
                             Sacola
                           </div>
@@ -384,7 +382,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                           <Button
                             key={category.id}
                             variant="ghost"
-                            className="cursor-pointer justify-start rounded-lg text-sm font-medium"
+                            className="bg-primary-foreground cursor-pointer justify-start rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:text-white"
                             asChild
                           >
                             <Link href={`/category/${category.slug}`}>
