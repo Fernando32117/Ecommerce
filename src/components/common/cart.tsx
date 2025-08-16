@@ -41,8 +41,22 @@ export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
     <Sheet>
       <SheetTrigger asChild>
         {trigger || (
-          <Button variant="outline" size="icon" ref={sheetRef}>
+          <Button
+            variant="outline"
+            size="icon"
+            ref={sheetRef}
+            className="relative"
+          >
             <ShoppingBasketIcon />
+            {cart?.items && cart.items.length > 0 && (
+              <span className="bg-primary absolute -top-1 -right-1 rounded-full px-2 py-0.5 text-xs text-white">
+                {cart.items.reduce(
+                  (acc: number, item: { quantity: number }) =>
+                    acc + item.quantity,
+                  0,
+                )}
+              </span>
+            )}
           </Button>
         )}
       </SheetTrigger>

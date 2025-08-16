@@ -13,9 +13,11 @@ import Link from "next/link";
 import { useRef } from "react";
 
 import { categoryTable } from "@/db/schema";
+import { useCart } from "@/hooks/queries/use-cart";
 import { authClient } from "@/lib/auth-client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
   Sheet,
@@ -32,6 +34,7 @@ interface HeaderProps {
 
 export const Header = ({ categories = [] }: HeaderProps) => {
   const { data: session } = authClient.useSession();
+  const { data: cart } = useCart();
   const cartRef = useRef<CartRef>(null);
 
   const handleOpenCart = () => {
@@ -214,14 +217,23 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                   </div>
                 </SheetContent>
               </Sheet>
-              <div className="h-6 w-px bg-gray-300"></div>
+              <div className="bg-primary h-6 w-px"></div>
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8"
+                className="relative h-10 w-10"
                 onClick={handleOpenCart}
               >
-                <ShoppingBagIcon className="h-5 w-5" />
+                <ShoppingBagIcon className="h-10 w-10" />
+                {cart?.items && cart.items.length > 0 && (
+                  <Badge className="bg-primary absolute -top-1 -right-1 rounded-full px-2 py-0.5 text-xs text-white">
+                    {cart?.items?.reduce(
+                      (acc: number, item: { quantity: number }) =>
+                        acc + item.quantity,
+                      0,
+                    ) ?? 0}
+                  </Badge>
+                )}
               </Button>
             </div>
           </div>
