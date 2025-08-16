@@ -33,7 +33,7 @@ const MyOrdersPage = async () => {
   return (
     <div className="space-y-5">
       <Header />
-      <div className="px-5">
+      <div className="mt-25 px-5">
         <Orders
           orders={orders.map((order) => ({
             id: order.id,
