@@ -6,6 +6,7 @@ import {
   LogOutIcon,
   MenuIcon,
   ShoppingBagIcon,
+  ShoppingBasketIcon,
   TruckIcon,
   UserIcon,
 } from "lucide-react";
@@ -42,7 +43,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
   };
 
   return (
-    <header>
+    <header className="fixed z-50 w-full bg-white shadow-md">
       {/* Desktop Header */}
       <div className="hidden md:block">
         {/* Top Header Bar */}
@@ -98,8 +99,12 @@ export const Header = ({ categories = [] }: HeaderProps) => {
             <div className="flex items-center gap-4">
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
-                    <MenuIcon className="h-5 w-5" />
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-10 w-10 cursor-pointer border"
+                  >
+                    <MenuIcon className="h-10 w-10" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent>
@@ -221,10 +226,10 @@ export const Header = ({ categories = [] }: HeaderProps) => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative h-10 w-10"
+                className="relative h-10 w-10 cursor-pointer border"
                 onClick={handleOpenCart}
               >
-                <ShoppingBagIcon className="h-10 w-10" />
+                <ShoppingBasketIcon className="h-10 w-10" />
                 {cart?.items && cart.items.length > 0 && (
                   <Badge className="bg-primary absolute -top-1 -right-1 rounded-full px-2 py-0.5 text-xs text-white">
                     {cart?.items?.reduce(

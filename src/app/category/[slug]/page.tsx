@@ -29,7 +29,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
   return (
     <>
       <Header categories={categories} />
-      <div className="space-y-6 px-5">
+      <div className="mt-25 space-y-6 px-5 md:mt-65">
         <h2 className="text-xl font-semibold md:text-[20px]">
           {category.name}
         </h2>

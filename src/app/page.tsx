@@ -26,8 +26,8 @@ const Home = async () => {
   return (
     <>
       <Header categories={categories} />
-      <div className="space-y-6">
-        <div className="px-5">
+      <div className="mt-20 space-y-6 md:pt-20">
+        <div className="px-5 md:pt-25">
           <Link href="/category/camisetas">
             <Image
               src="/capa1.svg"

@@ -45,7 +45,7 @@ export const Cart = forwardRef<CartRef, CartProps>(({ trigger }, ref) => {
             variant="outline"
             size="icon"
             ref={sheetRef}
-            className="relative"
+            className="relative cursor-pointer"
           >
             <ShoppingBasketIcon />
             {cart?.items && cart.items.length > 0 && (

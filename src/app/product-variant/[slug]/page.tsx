@@ -41,7 +41,7 @@ const ProductVariantPage = async ({ params }: ProductVariantPageProps) => {
   return (
     <>
       <Header categories={categories} />
-      <div className="mx-auto w-[90%] px-4 md:px-6 lg:px-8">
+      <div className="mx-auto mt-15 w-[90%] px-4 md:mt-58 md:px-6 lg:px-8">
         <div className="grid py-6 md:grid-cols-2 md:items-start md:gap-12 md:py-5 lg:gap-16">
           <div className="md:sticky md:top-6">
             <Image
@@ -50,14 +50,14 @@ const ProductVariantPage = async ({ params }: ProductVariantPageProps) => {
               sizes="(max-width: 768px) 100vw, 50vw"
               height={0}
               width={0}
-              className="h-auto w-full object-cover md:rounded-lg"
+              className="w-full rounded-lg object-cover"
               priority
             />
           </div>
 
           {/* Seção dos detalhes do produto */}
-          <div className="flex flex-col space-y-6 md:space-y-8">
-            <div className="px-5 md:px-0">
+          <div className="flex flex-col space-y-3 md:space-y-8">
+            <div className="mt-3 px-5 md:px-0">
               <VariantSelector
                 selectedVariantSlug={productVariant.slug}
                 variants={productVariant.product.variants}
