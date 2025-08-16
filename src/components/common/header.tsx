@@ -384,7 +384,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                           <Button
                             key={category.id}
                             variant="ghost"
-                            className="cursor-pointer justify-start rounded-lg bg-red-400 text-sm font-medium"
+                            className="cursor-pointer justify-start rounded-lg text-sm font-medium"
                             asChild
                           >
                             <Link href={`/category/${category.slug}`}>
