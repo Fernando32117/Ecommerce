@@ -111,7 +111,7 @@ export const Header = ({ categories = [] }: HeaderProps) => {
                   <SheetHeader>
                     <SheetTitle className="md:text-lg">Menu</SheetTitle>
                   </SheetHeader>
-                  <div className="px-5">
+                  <div className="mb-2 max-h-screen overflow-y-auto px-5">
                     {session?.user ? (
                       <>
                         <div className="flex justify-between space-y-6">
