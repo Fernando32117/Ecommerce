@@ -75,7 +75,7 @@ const Home = async () => {
             />
           </Link>
           <div className="hidden w-full overflow-hidden md:grid md:grid-cols-2 md:gap-4">
-            <Link href="/category/tnis" className="block h-auto w-full">
+            <Link href="/category/tenis" className="block h-auto w-full">
               <Image
                 src="/bannerTenis2.svg"
                 alt="Nike Therma FIT Headed"
@@ -85,7 +85,7 @@ const Home = async () => {
                 className="h-auto w-full cursor-pointer"
               />
             </Link>
-            <Link href="/category/tnis" className="block h-auto w-full">
+            <Link href="/category/tenis" className="block h-auto w-full">
               <Image
                 src="/bannerTenis1.svg"
                 alt="Nike Therma FIT Headed"
