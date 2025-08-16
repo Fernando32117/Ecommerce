@@ -46,7 +46,7 @@ const IdentificationPage = async () => {
   return (
     <div>
       <Header categories={categories} />
-      <div className="px-5">
+      <div className="mt-22 px-5 md:mt-63">
         <div className="flex flex-col md:flex-row md:items-start md:gap-10 md:px-20">
           <div className="flex-1 space-y-4 md:space-y-0">
             <Addresses
